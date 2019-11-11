@@ -15,7 +15,7 @@ These steps have been performed using a ubuntu-16.04 host system
 
 * Install Docker
 * Install Vivado 2019.x
-  * For JTAG connection execute install_drivers script:
+  * For JTAG connection execute `install_drivers` script:
     * `sudo <xilinx-install-folder>/Vivado/2019.1/data/xicom/cable_drivers/lin64/install_script/install_drivers/install_drivers`
 * Install Vivado HLS
 
@@ -28,9 +28,10 @@ Steps adapted from: `http://xillybus.com/xillinux` and `http://xillybus.com/down
 ### Download necessary files
 
 Download the following:
+
 * Boot partition files
- * (Option 1)[Zedboard boot partition](http://xillybus.com/downloads/xillinux-eval-zedboard-2.0c.zip)
- * (Option 2) Files in boot-partition
+  * (Option 1)[Zedboard boot partition](http://xillybus.com/downloads/xillinux-eval-zedboard-2.0c.zip)
+  * (Option 2) Files in boot-partition
 * [Xillinux OS](http://xillybus.com/downloads/xillinux-2.0.img.gz)
 
 ### Follow the steps in the tutorial
@@ -38,9 +39,9 @@ Download the following:
 Follow the steps from the [Xillibus tutorial](http://xillybus.com/downloads/doc/xillybus_getting_started_zynq.pdf).
 
 * Collect the files needed to boot
- * (OPTION 1) Unzip the boot files `xillinux-eval-board-XXX.zip`
-  * Generate the bitstream with Vivado and the `verilog` project (3.3.4 and 3.3.5)
- * (OPTION 2) Download the files from the boot partition folder in this project 
+  * (OPTION 1) Unzip the boot files `xillinux-eval-board-XXX.zip`
+    * Generate the bitstream with Vivado and the `verilog` project (3.3.4 and 3.3.5)
+  * (OPTION 2) Download the files from the boot partition folder in this project 
 * Copy the image to the SD card (3.4.3)
   * Verify in which partition is the SD Card with `lsblk` (`/dev/sdX`)
   * flash the SD card (be careful to not erase anything on the host PC)
