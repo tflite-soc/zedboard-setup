@@ -9,5 +9,5 @@ These steps have been performed using a ubuntu-16.04 host system
 * Install Docker
 * Install Vivado HLS
   * For JTAG connection execute install_drivers script:
-    *`sudo <xilinx-install-folder>/Vivado/2019.1/data/xicom/cable_drivers/lin64/install_script/install_drivers/install_drivers`
+    * `sudo <xilinx-install-folder>/Vivado/2019.1/data/xicom/cable_drivers/lin64/install_script/install_drivers/install_drivers`
 * Install Vivado SDK
