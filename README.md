@@ -25,19 +25,31 @@ We want to have OS support on the Zedboard. This step by step guides you on how 
 
 Steps adapted from: `http://xillybus.com/xillinux` and `http://xillybus.com/downloads/doc/xillybus_getting_started_zynq.pdf`.
 
+### Download necessary files
+
+Download the following:
+* Boot partition files
+ * (Option 1)[Zedboard boot partition](http://xillybus.com/downloads/xillinux-eval-zedboard-2.0c.zip)
+ * (Option 2) Files in boot-partition
+* [Xillinux OS](http://xillybus.com/downloads/xillinux-2.0.img.gz)
+
 ### Follow the steps in the tutorial
 
 Follow the steps from the [Xillibus tutorial](http://xillybus.com/downloads/doc/xillybus_getting_started_zynq.pdf).
 
-* Unzip the boot partition `xillinux-eval-board-XXX.zip`
-* Generate the bitstream with Vivado and the `verilog` project (3.3.4 and 3.3.5)
+* Collect the files needed to boot
+ * (OPTION 1) Unzip the boot files `xillinux-eval-board-XXX.zip`
+  * Generate the bitstream with Vivado and the `verilog` project (3.3.4 and 3.3.5)
+ * (OPTION 2) Download the files from the boot partition folder in this project 
 * Copy the image to the SD card (3.4.3)
   * Verify in which partition is the SD Card with `lsblk` (`/dev/sdX`)
   * flash the SD card (be careful to not erase anything on the host PC)
-   *  `# dd if=xillinux.img of=/dev/sdX bs=4k`
+   * `gunzip -c xillinux-2.0.img.gz`
+   * `sudo dd if=xillinux-2.0.img of=/dev/sdX bs=64K conv=noerror,sync`
+   * `sync # Necessary to flush all the writes to the sd card` 
 * Copying the bootfiles and bitstreams to the SD Card image (3.5)
-  * Must copy `boot.bin` and `devicetree.dtb` into SD Card `/boot/` partition
-  * Must copy `xilidemo.bit` generated with Vivado 
+  * Must copy `boot.bin` and `devicetree.dtb` into SD Card first partition `/dev/sdX1`
+  * Must copy `xilidemo.bit` generated with Vivado into SD Card first partition `/dev/sdX1`
 * Insert SD card into zedboard and make sure that the jumpers are set to boot from the SD card (4.1.1)
 * Log to your zedboard using the serial port
   * `minicom -D /dev/ttyACM0 -b 115200 -8 -o`
@@ -45,13 +57,6 @@ Follow the steps from the [Xillibus tutorial](http://xillybus.com/downloads/doc/
   * `ifconfig`
   * on the host `ssh root@10.42.0.196`
 * Increase the space of the sd card (4.4.1)
-
-
-### Download necessary files
-
-Download the following:
-* [Zedboard boot partition](http://xillybus.com/downloads/xillinux-eval-zedboard-2.0c.zip)
-* [Xillinux OS](http://xillybus.com/downloads/xillinux-2.0.img.gz)
 
 
 ### Files in the boot partition
