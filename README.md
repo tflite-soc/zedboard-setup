@@ -23,9 +23,31 @@ These steps have been performed using a ubuntu-16.04 host system
 
 We want to have OS support on the Zedboard. This step by step guides you on how to install Xillinux on the SD Card, with the necessary Zedboard boot files.
 
-### Download necessary files
-
 Steps adapted from: `http://xillybus.com/xillinux` and `http://xillybus.com/downloads/doc/xillybus_getting_started_zynq.pdf`.
+
+### Follow the steps in the tutorial
+
+Follow the steps from the [Xillibus tutorial](http://xillybus.com/downloads/doc/xillybus_getting_started_zynq.pdf).
+
+* Unzip the boot partition `xillinux-eval-board-XXX.zip`
+* Generate the bitstream with Vivado and the `verilog` project (3.3.4 and 3.3.5)
+* Copy the image to the SD card (3.4.3)
+  * Verify in which partition is the SD Card with `lsblk` (`/dev/sdX`)
+  * flash the SD card (be careful to not erase anything on the host PC)
+   *  `# dd if=xillinux.img of=/dev/sdX bs=4k`
+* Copying the bootfiles and bitstreams to the SD Card image (3.5)
+  * Must copy `boot.bin` and `devicetree.dtb` into SD Card `/boot/` partition
+  * Must copy `xilidemo.bit` generated with Vivado 
+* Insert SD card into zedboard and make sure that the jumpers are set to boot from the SD card (4.1.1)
+* Log to your zedboard using the serial port
+  * `minicom -D /dev/ttyACM0 -b 115200 -8 -o`
+* Find out the zedboard ip address for ssh connection
+  * `ifconfig`
+  * on the host `ssh root@10.42.0.196`
+* Increase the space of the sd card (4.4.1)
+
+
+### Download necessary files
 
 Download the following:
 * [Zedboard boot partition](http://xillybus.com/downloads/xillinux-eval-zedboard-2.0c.zip)
