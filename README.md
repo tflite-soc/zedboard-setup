@@ -66,3 +66,13 @@ Follow the steps from the [Xillibus tutorial](http://xillybus.com/downloads/doc/
 * boot.bin – The initial bootloader. This file contains the initial processor initializations and the U-boot utility, and is significantly different from board to board.
 * devicetree.dtb – The Device Tree Blob file, which contains hardware informationfor the Linux kernel.
 * xillydemo.bit – The PL (FPGA) programming file, generated during the Vivado 2019 step
+
+
+# LICENSE Note
+
+This repository is licensed under the [Apache License 2.0](LICENSE)
+
+However, files in the `boot-partition/` folder have been downloaded from
+other sources that comply with different licenses. Please read more at:
+
+* http://xillybus.com/xillinux
